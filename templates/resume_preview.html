@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}简历预览页{% endblock %}
+{% block body %}
+    <div id="wrap">
+    <h2>{{ resume_info.name }}的个人简历</h2>
+    <table class="table table-hover">
+    <tr>
+        <th>姓名：</th>    
+        <th>{{ resume_info.name }}</th>    
+        <th>学历：</th>  
+        <th>{{ resume_info.eduaction }}</th>
+        <th rowspan=6>
+            <div><img src="/static/upload/{{ resume_info.picture }}"></div>
+        </th>  
+    </tr>   
+    <tr>
+        <th>自我描述：</th>    
+        <th>{{ resume_info.description }}</th>    
+        <th>薪水：</th>  
+        <th>{{ resume_info.hope_salary }}</th>
+    </tr> 
+    <tr>
+        <th>个人亮点：</th>    
+        <th>{{ resume_info.self_evaluate }}</th>    
+        <th>移动电话：</th>  
+        <th>{{ resume_info.mobilephone }}</th>
+    </tr> 
+    <tr>
+        <th>自我评价：</th>    
+        <th>{{ resume_info.tag }}</th>    
+        <th>工作类型：</th>  
+        <th>{{ resume_info.hope_type }}</th>
+    </tr> 
+    <tr>
+        <th>工作城市：</th>  
+        <th>{{ resume_info.city }}</th>    
+        <th>期望工作：</th>  
+        <th>{{ resume_info.hope_work }}</th>
+    </tr> 
+    <tr>
+        <th>邮箱：</th>  
+        <th>{{ resume_info.email }}</th>    
+        <th>期望工作城市：</th>  
+        <th>{{ resume_info.hope_city }}</th>
+    </tr>
+    </table>
+    <h2>工作经历：</h2>
+    {% for we in work_experience %}
+    <table class="table table-hover">
+        <tr>
+            <td>公司：</td>
+            <td>{{ we.company_name }}</td>   
+            <td>工作：</td>
+            <td>{{ we.job }}</td> 
+        </tr>
+        <tr>
+            <td>开始时间：</td>
+            <td>{{ we.start_date | date:"Y-m-d" }}</td> 
+            <td>结束时间：</td>
+            <td>{{ we.end_date | date:"Y-m-d" }}</td> 
+        </tr>    
+        <tr>
+            <td colspan=2 bgcolor=ddeeff>描述：</td>
+            <td colspan=2 bgcolor=ddeeff>{{ we.description }}</td>
+        </tr>
+    </table>
+    {% endfor %}
+    <h2>教育经历：</h2>
+    {% for se in study_experience %}
+        <table class="table table-hover">
+        <tr>
+            <td>学校：</td>
+            <td>{{ se.school_name }}</td>   
+            <td>学历：</td>
+            <td>{{ se.educational }}</td> 
+        </tr>
+        <tr>
+            <td>开始时间：</td>
+            <td>{{ se.start_date | date:"Y-m-d" }}</td> 
+            <td>结束时间：</td>
+            <td>{{ se.end_date | date:"Y-m-d" }}</td> 
+        </tr>    
+        <tr>
+            <td colspan=2 bgcolor=ddeeff>专业：</td>
+            <td colspan=2 bgcolor=ddeeff>{{ se.subject }}</td>
+        </tr>
+    </table>
+    {% endfor %}
+    
+{% endblock %}
